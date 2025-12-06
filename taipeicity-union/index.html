@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>臺北市立聯合醫院企業工會 - 入會申請</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { 
+            background-color: #f8f9fa; 
+            padding: 15px; 
+            font-family: "Microsoft JhengHei", sans-serif;
+            -webkit-user-select: none; user-select: none; 
+            -webkit-touch-callout: none;
+        }
+        /* 恢復輸入框選取功能 */
+        input, textarea, select { -webkit-user-select: text; user-select: text; font-size: 16px !important; }
+        .allow-select { -webkit-user-select: text; user-select: text; }
+        
+        .container { 
+            max-width: 800px; background: white; padding: 25px; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.1); 
+        }
+        @media (min-width: 768px) { .container { padding: 40px; } body { padding: 20px; } }
+        
+        h2.main-title { font-size: calc(1.5rem + 1vw); word-break: keep-all; line-height: 1.4; }
+        
+        .signature-box { border: 2px solid #0d6efd; background-color: #fcfcfc; border-radius: 5px; padding: 0; overflow: hidden; position: relative; }
+        .signature-pad { width: 100%; height: 200px; display: block; touch-action: none; cursor: crosshair; }
+        
+        .intro-box { background-color: #e9ecef; padding: 20px; border-radius: 8px; margin-bottom: 30px; border-left: 6px solid #0d6efd; }
+        .intro-box h4 { color: #0d6efd; margin-top: 20px; margin-bottom: 15px; font-weight: bold; font-size: 1.3rem; }
+        .intro-box h5 { color: #333; font-weight: bold; margin-top: 15px; margin-bottom: 10px; border-bottom: 1px solid #ccc; padding-bottom: 5px; display: inline-block;}
+        .intro-box p { font-size: 0.95rem; line-height: 1.7; color: #333; margin-bottom: 10px; text-align: justify; }
+        .intro-box ul { padding-left: 20px; }
+        .intro-box li { margin-bottom: 8px; }
+        
+        .required-mark { color: red; margin-left: 3px; }
+        .loading { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 9999; color: white; text-align: center; padding-top: 30vh; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center mb-4 fw-bold main-title">臺北市立聯合醫院企業工會<br>入會申請書</h2>
+    
+    <div class="intro-box">
+        <h4 class="mt-0">入會程序說明</h4>
+        <p>申請入會前請詳閱會員須知，本會章程第六條及第七條。</p>
+        
+        <h5>第六條</h5>
+        <p>凡任職於台北市立聯合醫院之勞工與員工，皆符合加入工會之資格。</p>
+        <p>本會會員分為一般會員及贊助會員兩種，凡任職於台北市立聯合醫院之勞工與員工，除代表雇主行使管理權及具備勞動關係上之各種利益有直接影響力或支配力之主管人員外，皆符合加入工會之一般會員資格。</p>
+        <p>代表雇主行使管理權及具備勞動關係上之各種利益有直接影響力或支配力之主管人員，認同本會宗旨者，亦得向本會申請入會為贊助會員。</p>
+        <p>原一般會員因升遷或調任而具代表雇主行使管理權及具備勞動關係上之各種利益有直接影響力或支配力之主管職者，變更為贊助會員。原擔任本會理、監事者、會員代表者，經理事會投票過三分之二票數之同意後，得繼續執行原職務最多 6個月，並應在期間內舉辦理監事、會員代表補選，或由原備取名單遞補之。</p>
+        <p>會員經工會推派，出任院內各項委員會之工會代表，於晉升主管或具備勞動關係上之各種利益有直接影響力或支配力人員時，即喪失工會代表資格，並由工會另行推派出缺之職務。</p>
+
+        <h5>第七條</h5>
+        <p>入會時需填寫入會申請書，經理事會審查通過後從薪資代扣入會費及會費，方具有本會會籍。</p>
+
+        <hr>
+        <h4>入會步驟</h4>
+        <ul>
+            <li><strong>第一步：</strong>填寫本表單基本資料</li>
+            <li><strong>第二步：</strong>入會單電子簽名</li>
+            <li><strong>第三步：</strong>填完後會自動生成PDF寄至工會信箱</li>
+            <li><strong>第四步：</strong>每月理事會審查 → 審查完畢即完成入會！</li>
+        </ul>
+
+        <!-- 費用顯示區塊 -->
+        <div class="row g-2 mb-3 mt-4">
+             <div class="col-6">
+                 <div class="p-3 bg-warning bg-opacity-10 border border-warning rounded text-center h-100">
+                     <div class="small text-muted fw-bold">一次性</div>
+                     <div class="fw-bold fs-5 text-dark" style="word-break: keep-all;">入會費 1200元</div>
+                 </div>
+             </div>
+             <div class="col-6">
+                 <div class="p-3 bg-danger bg-opacity-10 border border-danger rounded text-center h-100">
+                     <div class="small text-muted fw-bold">每月固定</div>
+                     <div class="fw-bold fs-5 text-dark" style="word-break: keep-all;">會費 250元</div>
+                 </div>
+             </div>
+        </div>
+
+        <p class="mb-0 text-muted small border-top pt-2 allow-select">
+            若以上步驟有操作上的困難，可聯繫工會(電話:0910-075-521)，本會可協調幹部至您所在院區進行現場入會，感謝您的支持！
+        </p>
+    </div>
+
+    <form id="unionForm">
+        <h4 class="mb-3 border-bottom pb-2">基本資料</h4>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <label class="form-label">員工編號<span class="required-mark">*</span></label>
+                <input type="text" class="form-control" name="empId" required>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">院區<span class="required-mark">*</span></label>
+                <select class="form-select" name="campus" required>
+                    <option value="" disabled selected>請選擇</option>
+                    <option value="中興">中興</option>
+                    <option value="仁愛">仁愛</option>
+                    <option value="和平">和平</option>
+                    <option value="陽明">陽明</option>
+                    <option value="林中昆">林中昆</option>
+                    <option value="松德">松德</option>
+                    <option value="忠孝">忠孝</option>
+                    <option value="院本部">院本部</option>
+                    <option value="婦幼">婦幼</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">單位<span class="required-mark">*</span></label>
+                <input type="text" class="form-control" name="unit" placeholder="例：護理科/7A" required>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">姓名<span class="required-mark">*</span></label>
+                <input type="text" class="form-control" name="name" required>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">職稱<span class="required-mark">*</span></label>
+                <input type="text" class="form-control" name="title" required>
+            </div>
+            
+            <div class="col-md-6">
+                <label class="form-label">勞工類別<span class="required-mark">*</span></label>
+                <select class="form-select" name="workerType" required>
+                    <option value="" disabled selected>請選擇</option>
+                    <option value="約用">約用</option>
+                    <option value="公職">公職</option>
+                    <option value="部分工時">部分工時</option>
+                </select>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">生日<span class="required-mark">*</span></label>
+                <input type="date" class="form-control" name="birthday" required>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">手機<span class="required-mark">*</span></label>
+                <input type="tel" class="form-control" name="mobile" required>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">連絡電話 (選填)</label>
+                <input type="tel" class="form-control" name="phone">
+            </div>
+            <div class="col-12">
+                <label class="form-label">通訊地址<span class="required-mark">*</span></label>
+                <input type="text" class="form-control" name="address" required>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">E-mail (常用信箱)<span class="required-mark">*</span></label>
+                <input type="email" class="form-control" name="email" required>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">LINE ID<span class="required-mark">*</span></label>
+                <input type="text" class="form-control" name="lineId" required>
+            </div>
+            
+             <div class="col-md-6">
+                <label class="form-label">臉書名稱 (選填)</label>
+                <input type="text" class="form-control" name="fb">
+            </div>
+
+            <div class="col-12 mt-4">
+                <label class="form-label fw-bold">申請入會類別<span class="required-mark">*</span></label>
+                <div class="card p-3">
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="category" id="cat1" value="general" checked>
+                        <label class="form-check-label" for="cat1"><strong>非主管，一般會員</strong></label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="category" id="cat2" value="sponsor">
+                        <label class="form-check-label" for="cat2"><strong>主管職，贊助會員</strong> (需符合章程定義)</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 修改後：手動勾選，未勾選會無法送出 -->
+            <div class="col-12 mt-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="consent1" required>
+                    <label class="form-check-label text-danger fw-bold" for="consent1">同意：入會費新台幣一千二百元整，由薪資代扣</label>
+                </div>
+                <div class="form-check mt-2">
+                    <input class="form-check-input" type="checkbox" id="consent2" required>
+                    <label class="form-check-label text-danger fw-bold" for="consent2">同意：每月固定會費新台幣二百五十元整，由薪資代扣</label>
+                </div>
+            </div>
+
+            <div class="col-12 mt-3">
+                <label class="form-label">想對工會說的話 (選填)</label>
+                <textarea class="form-control" name="comments" rows="3"></textarea>
+            </div>
+
+            <div class="col-12 mt-4">
+                <label class="form-label fw-bold">簽名處<span class="required-mark">*</span> (請在此框內簽名)</label>
+                <!-- 簽名框容器 -->
+                <div class="signature-box">
+                    <canvas id="signature-canvas" class="signature-pad"></canvas>
+                </div>
+                <button type="button" class="btn btn-sm btn-outline-secondary mt-2" onclick="clearSignature()">清除重簽</button>
+            </div>
+            
+            <div class="col-12 mt-5">
+                 <div class="alert alert-info border-0 bg-light-info">
+                    <i class="bi bi-info-circle"></i> 點擊送出後，系統將自動生成入會申請書 PDF，並將資料傳送至工會。
+                 </div>
+                <button type="submit" class="btn btn-primary w-100 btn-lg py-3 fw-bold shadow-sm">送出入會申請</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div id="loading" class="loading">
+    <div class="spinner-border text-light" style="width: 3rem; height: 3rem;" role="status"></div>
+    <h4 class="mt-3">資料處理中，請稍候...</h4>
+    <p>正在生成 PDF 並寫入資料庫</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+<script>
+    document.addEventListener('contextmenu', event => event.preventDefault());
+
+    const canvas = document.getElementById('signature-canvas');
+    let signaturePad;
+
+    function resizeCanvas() {
+        const ratio =  Math.max(window.devicePixelRatio || 1, 1);
+        canvas.width = canvas.offsetWidth * ratio;
+        canvas.height = canvas.offsetHeight * ratio;
+        canvas.getContext("2d").scale(ratio, ratio);
+        
+        if(signaturePad) signaturePad.clear(); 
+    }
+    
+    window.addEventListener("resize", resizeCanvas);
+    
+    signaturePad = new SignaturePad(canvas, {
+        backgroundColor: 'rgba(255, 255, 255, 0)', 
+        penColor: 'rgb(0, 0, 0)'
+    });
+    resizeCanvas(); 
+
+    function clearSignature() { signaturePad.clear(); }
+
+    const form = document.getElementById('unionForm');
+    const loading = document.getElementById('loading');
+    
+    const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbzUux7DYzjEzT4SeGOi4-UAHOOfRfqg5vwrw98ypWDLSdQ4X7ZZjCbb6se0-8nGZMh5/exec';
+
+    form.addEventListener('submit', function(e) {
+        // HTML5 required 屬性會在 e.preventDefault() 前先觸發瀏覽器預設驗證
+        // 如果沒勾選，submit 事件不會被觸發，瀏覽器會直接提示用戶
+        
+        e.preventDefault();
+        
+        if (signaturePad.isEmpty()) {
+            alert("錯誤：請在簽名框內簽名！");
+            canvas.scrollIntoView({behavior: "smooth", block: "center"});
+            return;
+        }
+
+        if(!confirm("確認資料無誤並送出申請？")) return;
+
+        loading.style.display = 'block';
+
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+        data.signatureData = signaturePad.toDataURL('image/png');
+
+        fetch(GAS_API_URL, {
+            method: 'POST',
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(result => {
+            loading.style.display = 'none';
+            if(result.status === 'success') {
+                alert('申請成功！\n入會申請書 PDF 已生成。');
+                form.reset();
+                signaturePad.clear();
+                window.scrollTo(0,0);
+            } else {
+                alert('發生錯誤：' + result.message);
+            }
+        })
+        .catch(error => {
+            loading.style.display = 'none';
+            alert('連線錯誤，請檢查網路或稍後再試。');
+            console.error('Error:', error);
+        });
+    });
+</script>
+
+</body>
+</html>

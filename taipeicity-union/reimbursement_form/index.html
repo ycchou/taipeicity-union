@@ -530,32 +530,28 @@
                 };
 
                 // 4. Send to GAS
-                // NOTE: Replace 'YOUR_GAS_WEB_APP_URL' with the actual URL after deployment
-                // For local testing without backend, we simulate success after 2 seconds.
+                const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz_L9VvLx5ZWkY5U--4wps3tEIwAtz_Hjw3PwaviLNqZJ8-CSdDUm9wM2gGGox-tvEQ/exec";
 
-                if (window.google && window.google.script) {
-                    // We are inside GAS environment (IFramed)
-                    google.script.run
-                        .withSuccessHandler(onSuccess)
-                        .withFailureHandler(onFailure)
-                        .processForm(payload);
-                } else {
-                    console.log("Not running in GAS Iframe. Simulating or using fetch if URL provided.");
-                    // Simulate for demonstration
-                    console.log("Payload:", payload);
-                    setTimeout(onSuccess, 1500);
-
-                    // Real Fetch Implementation (Cross-Origin issues might occur if not handled properly)
-                    /*
-                    fetch('YOUR_SCIPT_URL', {
-                        method: 'POST',
-                        body: JSON.stringify(payload)
+                fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    // Using text/plain to avoid CORS preflight issues with "application/json"
+                    // GAS handles this correctly as long as the body is valid JSON.
+                    headers: {
+                        "Content-Type": "text/plain;charset=utf-8"
+                    },
+                    body: JSON.stringify(payload)
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'success') {
+                            onSuccess();
+                        } else {
+                            onFailure(data.message || "Unknown Error");
+                        }
                     })
-                    .then(res => res.json())
-                    .then(onSuccess)
-                    .catch(onFailure);
-                    */
-                }
+                    .catch(error => {
+                        onFailure("Network/API Error: " + error.message);
+                    });
             };
 
             reader.readAsDataURL(file);
